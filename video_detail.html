@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ video.title }} Details</title>
+</head>
+<body>
+    <h1>{{ video.title }} Details</h1>
+    <p>URL: {{ video.url }}</p>
+    <p>Duration: {{ video.duration }} seconds</p>
+    <p>Uploaded Date: {{ video.uploaded_date }}</p>
+    <h2>Caption Tracks</h2>
+    <ul>
+        {% for track in video.caption_tracks %}
+            <li>{{ track.language }} - {{ track.format }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
