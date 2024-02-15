@@ -1,0 +1,8 @@
+body {
+    background-color: black; /* Set the background color to black */
+    color: red; /* Set the text color to red */
+    margin: 0; /* Remove default body margin */
+    font-family: Arial, sans-serif; /* Optional: Set a font-family for your content */
+}
+
+/* Add any additional styling as needed */

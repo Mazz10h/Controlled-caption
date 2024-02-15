@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Other head elements as needed -->
+    <title>Your Caption Project</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .navigation-bar {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .header-sidebar-wrapper {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .sidebar {
+            background-color: white;
+            color: black;
+            padding: 20px;
+            width: 150px;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .explore-videos-section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .deployed-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Your HTML content -->
+    <div class="content">
+        <h1>Welcome to Your Caption Project</h1>
+        <p>Explore the world of captions.</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navigation-bar">
+        <a href="#upload-section">Upload Video</a>
+        <a href="#video-section">Explore Videos</a>
+        <!-- Add more navigation links as needed -->
+    </div>
+
+    <!-- Wrapper for Header, Sidebar, and Video Player -->
+    <div class="header-sidebar-wrapper">
+
+        <!-- Sidebar with File Upload and Login -->
+        <div class="sidebar">
+            <h2 id="upload-section">Upload Video</h2>
+
+            <!-- File Upload Form -->
+            <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+                <input type="file" name="video" accept="video/*" id="videoInput">
+                <button type="button" onclick="uploadVideo()">Upload</button>
+            </form>
+
+            <div id="loadingIndicator" style="display: none;">Uploading...</div>
+            <div id="errorMessage" style="color: red; display: none;"></div>
+            <div id="successMessage" style="color: green; display: none;">Video uploaded successfully!</div>
+
+        </div>
+
+        <!-- Video Player -->
+        <div class="video-container">
+            <video id="captionVideo" controls width="100%">
+                <source src="{{ url_for('static', filename='sample_video.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <script>
+                // ... Existing JavaScript code ...
+            </script>
+        </div>
+
+    </div>
+
+    <!-- Explore Videos Section -->
+    <div class="explore-videos-section">
+        <h2 id="video-section">Explore Videos</h2>
+        <!-- Add content for exploring videos -->
+    </div>
+
+    <!-- Deployed Project Button -->
+    <a href="http://127.0.0.1:5000" class="deployed-button">Go to Deployed Project</a>
+
+</body>
+</html>
+

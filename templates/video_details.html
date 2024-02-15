@@ -1,0 +1,77 @@
+<!-- templates/video_details.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ video.title }} Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        main {
+            margin-top: 20px;
+        }
+        .video-details {
+            margin-bottom: 20px;
+        }
+        .caption-list {
+            list-style: none;
+            padding: 0;
+        }
+        .caption-item {
+            margin-bottom: 20px;
+        }
+        .caption-header {
+            background-color: #555;
+            color: white;
+            padding: 8px;
+        }
+        .caption-segments {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ video.title }} Details</h1>
+    </header>
+    <main>
+        <section class="video-details">
+            <h2>{{ video.title }}</h2>
+            <p>Duration: {{ video.duration }} seconds</p>
+            <p>Uploaded on: {{ video.uploaded_date }}</p>
+            <p>Video URL: <a href="{{ video.url }}" target="_blank">{{ video.url }}</a></p>
+        </section>
+        <section>
+            <h2>Caption Tracks</h2>
+            {% if video.caption_tracks %}
+                <ul class="caption-list">
+                    {% for caption_track in video.caption_tracks %}
+                        <li class="caption-item">
+                            <div class="caption-header">
+                                <h3>{{ caption_track.language }} - {{ caption_track.format }}</h3>
+                            </div>
+                            <ul class="caption-segments">
+                                {% for segment in caption_track.caption_segments %}
+                                    <li>{{ segment.start_time }} - {{ segment.end_time }}: {{ segment.text }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No caption tracks available for this video.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>
